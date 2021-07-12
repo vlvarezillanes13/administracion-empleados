@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/foundation.min.css' %}">
+
+
+    <title>CREATEVIEW</title>
+</head>
+<body>
+    <h1>CREATEVIEW</h1>
+    {{form.as_p}}
+
+    <a href="about.html" class="button">Learn More</a>
+    <a href="#features" class="button">View All Features</a>
+
+    <!-- Buttons (actions) -->
+    <button type="button" class="success button">Save</button>
+    <button type="button" class="alert button">Delete</button>
+
+    <script src='{% static "js/vendor/jquery.js" %}'></script>
+    <script src='{% static "js/vendor/what-input.js" %}'></script>
+    <script src='{% static "js/vendor/foundation.min.js" %}'></script>
+    <script src='{% static "js/vendor/foundation.js" %}'></script>
+    <script>
+        $(document).foundation();
+    </script>
+    
+    </body>
+</html>

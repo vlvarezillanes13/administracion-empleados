@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Lista departamento
+{% endblock title %}
+
+
+{% block content %}
+    {% include 'includes/header.html' %}
+
+    <div class="grid-container">
+        <div class="grid-x">
+            <h1 class="cell">Lista Departamentos</h1>
+            <div class="cell">
+                <table>
+                    <tbody>
+                        {% for depa in departamentos %}
+                          <tr>
+                              <td>{{depa.name}}</td>
+                              <td>{{depa.shor_name}}</td>
+                              <td><a href="{% url 'persona_app:empleados_area' depa.id %}" type="button" class="warning button">Ver Empleados</a></td>
+                          </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="cell">
+                {% if is_paginated %}
+                  <nav aria-label="Pagination">
+                    <ul class="pagination">
+                      {% if page_obj.has_previous %}
+                      <li class="pagination-previous"><a href="?page={{page_obj.previous_page_number}}">Atras</a></li>
+                      {% else %}
+                      <li class="pagination-previous disabled">Atras</li>
+                      {% endif %}
+                      
+                      {% for pagina in paginator.page_range %}
+                      
+                      {% ifequal pagina page_obj.number  %} 
+                      <li class="current"><span class="show-for-sr">Actual</span>{{pagina}}</li>
+                      {% else %}
+                      <li><a href="?page={{pagina}}">{{pagina}}</a></li>
+                      {% endifequal %}          
+                      {% endfor %}
+                      
+                      {% if page_obj.has_next %}
+                      <li class="pagination-next"><a href="?page={{page_obj.next_page_number}}">Siguiente</a></li>
+                      {% else %}
+                        <li class="pagination-next disabled">Siguiente</li>
+                      {% endif %}
+                    </ul>
+                  </nav>
+                {% endif %}  
+              </div>
+        </div>
+    </div>
+{% endblock content %}
