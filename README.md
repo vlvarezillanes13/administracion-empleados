@@ -2,7 +2,8 @@
 # CRUD Empleados
 
 ```
-source empleados-venv/bin/activate
-
+python3 -m venv
+source venv/bin/activate
+pip install -r requirements.txt
 python manage.py runserver
 ```
